@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Workflow Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen p-2.5 flex flex-col justify-between overflow-hidden text-slate-800 select-none">
+
+  <!-- 2x2 Grid Layout -->
+  <div class="grid grid-cols-2 grid-rows-2 gap-2.5 h-full w-full">
+
+    <!-- Box 1: Facebook Groups -->
+    <div class="bg-white rounded-2xl p-3 shadow-md border border-slate-200/80 flex flex-col justify-between overflow-hidden">
+      <div>
+        <div class="flex items-center justify-between pb-1 border-b border-slate-100">
+          <h2 class="text-[13px] font-bold text-slate-800 flex items-center gap-1.5">
+            <i class="fa-brands fa-facebook text-blue-600"></i> FB Groups
+          </h2>
+          <span class="text-[10px] bg-blue-50 text-blue-600 font-semibold px-1.5 py-0.5 rounded-full">3 Active</span>
+        </div>
+        <div class="space-y-1.5 mt-2 overflow-y-auto max-h-[120px] custom-scroll">
+          <div class="p-1.5 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-200/60 flex justify-between items-center cursor-pointer transition">
+            <div>
+              <p class="text-[11px] font-semibold text-slate-800">USS AM&D - 7850</p>
+              <p class="text-[9px] text-slate-400">Pod Group • 14k members</p>
+            </div>
+            <i class="fa-solid fa-ellipsis text-slate-400 text-xs"></i>
+          </div>
+          <div class="p-1.5 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-200/60 flex justify-between items-center cursor-pointer transition">
+            <div>
+              <p class="text-[11px] font-semibold text-slate-800">USS OM - 7020</p>
+              <p class="text-[9px] text-slate-400">Marketing • 8.5k</p>
+            </div>
+            <i class="fa-solid fa-ellipsis text-slate-400 text-xs"></i>
+          </div>
+          <div class="p-1.5 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-200/60 flex justify-between items-center cursor-pointer transition">
+            <div>
+              <p class="text-[11px] font-semibold text-slate-800">High HS - 9777</p>
+              <p class="text-[9px] text-slate-400">Niche Audience • 32k</p>
+            </div>
+            <i class="fa-solid fa-ellipsis text-slate-400 text-xs"></i>
+          </div>
+        </div>
+      </div>
+      <button class="w-full mt-1 py-1 text-[10px] font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition">
+        + Add New Group
+      </button>
+    </div>
+
+    <!-- Box 2: Prompt Instructions -->
+    <div class="bg-white rounded-2xl p-3 shadow-md border border-slate-200/80 flex flex-col justify-between overflow-hidden">
+      <div>
+        <div class="flex items-center justify-between pb-1 border-b border-slate-100">
+          <h2 class="text-[13px] font-bold text-slate-800 flex items-center gap-1.5">
+            <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> Prompts
+          </h2>
+          <span class="text-[9px] text-slate-400">1-Tap Copy</span>
+        </div>
+        <div class="space-y-1.5 mt-2 overflow-y-auto max-h-[120px] custom-scroll">
+          <div onclick="copyText('Trending Retro Vintage Graphic Tee - Limited Edition 50% Off!')" class="p-1.5 bg-slate-50 active:scale-95 hover:bg-amber-50/50 rounded-lg border border-slate-200/60 cursor-pointer transition">
+            <span class="text-[9px] font-bold text-blue-600">[7850]</span>
+            <p class="text-[10px] font-medium text-slate-700 leading-tight">Copy mockup design</p>
+          </div>
+          <div onclick="copyText('Get yours now before stock runs out! Worldwide shipping available.')" class="p-1.5 bg-slate-50 active:scale-95 hover:bg-amber-50/50 rounded-lg border border-slate-200/60 cursor-pointer transition">
+            <span class="text-[9px] font-bold text-emerald-600">[7020]</span>
+            <p class="text-[10px] font-medium text-slate-700 leading-tight">Edit description...</p>
+          </div>
+          <div onclick="copyText('#pod #tshirt #gearlaunch #merch #trending')" class="p-1.5 bg-slate-50 active:scale-95 hover:bg-amber-50/50 rounded-lg border border-slate-200/60 cursor-pointer transition">
+            <span class="text-[9px] font-bold text-purple-600">[9777]</span>
+            <p class="text-[10px] font-medium text-slate-700 leading-tight">Add tags & hashtags</p>
+          </div>
+        </div>
+      </div>
+      <button class="w-full mt-1 py-1 text-[10px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition flex items-center justify-center gap-1">
+        <span>Insert / Next</span> <i class="fa-solid fa-arrow-turn-down text-[9px]"></i>
+      </button>
+    </div>
+
+    <!-- Box 3: GearLaunch Dashboard -->
+    <div class="bg-white rounded-2xl p-3 shadow-md border border-slate-200/80 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-1 border-b border-slate-100">
+          <h2 class="text-[12px] font-bold text-slate-800 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            Gearlaunch
+          </h2>
+          <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 rounded">Live</span>
+        </div>
+        <div class="mt-2 flex justify-between items-baseline">
+          <div>
+            <p class="text-[10px] text-slate-400 font-medium">Daily Visits</p>
+            <p class="text-sm font-black text-slate-800">437</p>
+          </div>
+          <div class="text-right">
+            <p class="text-[10px] text-slate-400 font-medium">Today's Sales</p>
+            <p class="text-sm font-black text-emerald-600">$120.50</p>
+          </div>
+        </div>
+      </div>
+      <!-- Mini Chart Simulation -->
+      <div class="mt-2 bg-gradient-to-t from-emerald-50/80 to-transparent p-1.5 rounded-lg border border-emerald-100">
+        <p class="text-[9px] font-bold text-slate-500 mb-1">Sales History</p>
+        <svg viewBox="0 0 100 25" class="w-full h-7 stroke-emerald-500 fill-none stroke-[2.5] stroke-linecap-round">
+          <path d="M 0,20 Q 20,5 35,16 T 70,8 T 100,4" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Box 4: Post View & Publisher -->
+    <div class="bg-white rounded-2xl p-3 shadow-md border border-slate-200/80 flex flex-col justify-between">
+      <div class="flex items-center justify-between pb-1 border-b border-slate-100">
+        <h2 class="text-[13px] font-bold text-slate-800">Post View</h2>
+        <i class="fa-solid fa-cloud-arrow-up text-blue-500 text-xs"></i>
+      </div>
+      
+      <!-- Upload / Preview Box -->
+      <div class="my-1.5 bg-slate-50 border border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center p-2 text-center h-20">
+        <i class="fa-regular fa-image text-slate-400 text-base mb-1"></i>
+        <p class="text-[9px] text-slate-500">Upload content & text...</p>
+      </div>
+
+      <div class="space-y-1">
+        <div class="flex gap-1">
+          <button class="flex-1 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[9px] font-medium text-slate-700 flex items-center justify-center gap-1">
+            <i class="fa-solid fa-camera text-[8px]"></i> Media
+          </button>
+          <button class="flex-1 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[9px] font-medium text-slate-700 flex items-center justify-center gap-1">
+            <i class="fa-solid fa-bolt text-[8px]"></i> Auto
+          </button>
+        </div>
+        <button onclick="alert('Post published successfully!')" class="w-full py-1.5 bg-blue-600 active:bg-blue-700 text-white rounded-lg text-[11px] font-bold shadow-sm transition">
+          Next / Publish
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function copyText(text) {
+      navigator.clipboard.writeText(text);
+      alert('Copied: ' + text);
+    }
+  </script>
+</body>
+</html>
